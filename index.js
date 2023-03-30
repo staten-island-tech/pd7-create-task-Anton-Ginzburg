@@ -1,10 +1,6 @@
 const API_KEY = "a52cb174caac9a77a0c95146";
 let pastconversions = [];
-function convertCurrency() {
-  const from = document.getElementById("from").value;
-  const to = document.getElementById("to").value;
-  const amount = document.getElementById("amount").value;
-
+function convertCurrency(from, to, amount) {
   fetch(
     `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${from}/${to}/${amount}`
   )
@@ -31,4 +27,10 @@ function convertCurrency() {
   console.log(pastconversions[pastconversions.length - 1]);
 }
 
-document.getElementById("convert").addEventListener("click", convertCurrency);
+document.getElementById("convert").addEventListener("click", function () {
+  convertCurrency(
+    document.getElementById("from").value,
+    document.getElementById("to").value,
+    document.getElementById("amount").value
+  );
+});
